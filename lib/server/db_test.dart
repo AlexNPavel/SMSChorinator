@@ -1,7 +1,6 @@
 library chorinator.database;
 
 import 'dart:async';
-import 'dart:io';
 
 import 'package:SMSChorinator/server/db_handler.dart';
 
