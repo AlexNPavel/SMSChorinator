@@ -1,3 +1,3 @@
 # SMSChorinator
 
-A web app built using polymer.dart.
+A web app built using Angular2 Dart.
