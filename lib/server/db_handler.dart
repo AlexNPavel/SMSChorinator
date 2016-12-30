@@ -4,6 +4,33 @@ import 'dart:async';
 
 import 'package:mongo_dart/mongo_dart.dart';
 
+/*
+  Structure is as follows:
+  chores: {
+    Name: ...,
+    Description: ...,
+    User: ...,
+    Date: ...,
+    TimeZoneOffset: ...
+  }
+  users: {
+    Name: ...,
+    TimeZoneOffset: ...,
+    PhoneNumber: ...,
+    Groups: ["_id", "_id", ...]
+  }
+  groups: {
+    Name: ...,
+    Users: ["_id", "_id", ...],
+    Chores: ["_id", "_id", ...]
+  }
+*/
+
+/*
+ * The purpose of this class is to simply handle the database requests and keep
+ * a connection open if neccessary. Each method should only be a one-line call
+ * to the mongo server api.
+ */
 class DbHandler {
   Db db;
 
@@ -11,6 +38,70 @@ class DbHandler {
     db = new Db("mongodb://localhost:27017/smschorinator");
     await db.open();
   }
+
+/*
+  "GET" section
+*/
+
+  Future<Map> getUser(String name) async {
+    return db.collection('users').findOne({'name': name});
+  }
+
+  Future<Map> getChore(String name) async {
+    return db.collection('chores').findOne({'name': name});
+  }
+
+  Future<Map> getGroup(String name) async {
+    return db.collection('groups').findOne({'name': name});
+  }
+
+  Future<Map> getUserById(ObjectId id) async {
+    return db.collection('users').findOne(where.id(id));
+  }
+
+  Future<Map> getChoreById(ObjectId id) async {
+    return db.collection('chores').findOne(where.id(id));
+  }
+
+  Future<Map> getGroupById(ObjectId id) async {
+    return db.collection('groups').findOne(where.id(id));
+  }
+
+/*
+  "INSERT" section
+*/
+
+  Future<Map> insertMapIntoChores(Map document) async {
+    return db.collection('chores').insert(document);
+  }
+
+  Future<Map> insertMapIntoUsers(Map document) async {
+    return db.collection('users').insert(document);
+  }
+
+  Future<Map> insertMapIntoGroups(Map document) async {
+    return db.collection('groups').insert(document);
+  }
+
+/*
+  "REMOVE" section
+*/
+
+  Future<Map> removeChoreById(ObjectId id) async {
+    return db.collection('chores').remove(where.id(id));
+  }
+
+  Future<Map> removeUserById(ObjectId id) async {
+    return db.collection('users').remove(where.id(id));
+  }
+
+  Future<Map> removeGroupById(ObjectId id) async {
+    return db.collection('groups').remove(where.id(id));
+  }
+
+/*
+  Deprected section
+*/
 
   Future<Stream<Map>> getNotifications() async {
     return db.collection('notifications').find();
