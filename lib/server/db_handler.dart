@@ -11,13 +11,15 @@ import 'package:mongo_dart/mongo_dart.dart';
     Description: ...,
     User: ...,
     Date: ...,
-    TimeZoneOffset: ...
+    TimeZoneOffset: ...,
+    Group: ...
   }
   users: {
     Name: ...,
     TimeZoneOffset: ...,
     PhoneNumber: ...,
     Groups: ["_id", "_id", ...]
+    Chores: ["_id", "_id", ...]
   }
   groups: {
     Name: ...,
