@@ -14,7 +14,7 @@ class MainServer {
 
   main() async {
     db.initialize();
-    _apiServer.addApi(new ChorinatorApi());
+    _apiServer.addApi(new ChorinatorApi(db));
     _apiServer.enableDiscoveryApi();
 
     HttpServer server = await HttpServer.bind(InternetAddress.ANY_IP_V4, 8080);
