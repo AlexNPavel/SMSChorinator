@@ -7,22 +7,22 @@ import 'package:mongo_dart/mongo_dart.dart';
 /*
   Structure is as follows:
   chores: {
-    Name: ...,
-    Description: ...,
-    User: ...,
-    UTCDate: ...,
-    Group: ...
+    name: ...,
+    description: ...,
+    user: ...,
+    uTCDate: ...,
+    group: ...
   }
   users: {
-    Name: ...,
-    PhoneNumber: ...,
-    Groups: ["_id", "_id", ...]
-    Chores: ["_id", "_id", ...]
+    name: ...,
+    phoneNumber: ...,
+    groups: ["_id", "_id", ...]
+    chores: ["_id", "_id", ...]
   }
   groups: {
-    Name: ...,
-    Users: ["_id", "_id", ...],
-    Chores: ["_id", "_id", ...]
+    name: ...,
+    users: ["_id", "_id", ...],
+    chores: ["_id", "_id", ...]
   }
 */
 
