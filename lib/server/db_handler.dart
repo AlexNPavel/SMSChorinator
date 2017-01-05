@@ -10,8 +10,7 @@ import 'package:mongo_dart/mongo_dart.dart';
     Name: ...,
     Description: ...,
     User: ...,
-    Date: ...,
-    TimeZoneOffset: ...,
+    UTCDate: ...,
     Group: ...
   }
   users: {
